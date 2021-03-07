@@ -1,9 +1,15 @@
+/**
+ * BooksManager
+ * @author: Jacek Kulesz
+ */
 package database;
 
 import models.BookModel;
 import models.BookType;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -50,6 +56,10 @@ public class BooksManager extends BaseManager<BookModel> {
      */
     protected synchronized BookModel getBook(int bookId) {
         return booksMap.get(bookId);
+    }
+
+    protected synchronized Collection<BookModel> getAllBooks() {
+        return booksMap.values();
     }
 
     /**
@@ -111,7 +121,7 @@ public class BooksManager extends BaseManager<BookModel> {
     public synchronized boolean removeBook(int bookIdToRemove) {
         BookModel bm = booksMap.get(bookIdToRemove);
         if (bm != null) {
-            if (!bm.isBookLent()) {
+            if (!bm.isBookLent()) {     // book is not lent
                 // remove book from all caches - atomic operation
                 removeBookFromMap(shortTitleBooksMap, bookIdToRemove, BookModel.getShortBookKey(bm.getTitle()));
                 removeBookFromMap(fullTitleBooksMap, bookIdToRemove, bm.getTitle());
@@ -338,7 +348,6 @@ public class BooksManager extends BaseManager<BookModel> {
     protected void displayContent() {
         System.out.println();
         System.out.println("Number of books in library: " + booksMap.size());
-        System.out.println();
         for (BookModel bm : booksMap.values()) {
             System.out.println(bm.toString());
         }
