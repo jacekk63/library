@@ -1,3 +1,8 @@
+/**
+ * LibraryManager
+ * @author: Jacek Kulesz
+ * @date: 2021.03.07
+ */
 package database;
 
 import models.*;
@@ -102,13 +107,17 @@ public class LibraryManager {
         return booksManager.getBooks(fullTitle, title, author, year);
     }
 
+    public Collection<BookModel> getAllBooks() {
+        return booksManager.getAllBooks();
+    }
+
     /**
      * 9. Should allow to lent a book by ID (should be forbidden if copy with given ID is already lent).
      *    Should allow to pass the name of the person who lend the book.
      * Method lent specified book to specified user.
      * @param userId user id
      * @param bookId book id
-     * @return empty String when book is lent properly, otherwise name of User who lent book
+     * @return empty String when book is lent properly, otherwise returns name of User who lent book
      */
     public Optional<String> lentBook(int userId, int bookId) {
         Optional<LentBooksModel> optLbm = lentManager.lentBook(userId, bookId);
@@ -170,7 +179,7 @@ public class LibraryManager {
      * @return UserModel,
      * note: if user name is not in cache can return null value; could be replaced by Optional<UserName> like in BooksManager
      */
-    protected UserModel getUser(String name, String surname) {
+    public UserModel getUser(String name, String surname) {
         return usersManager.getUser(name, surname);
     }
 
@@ -218,7 +227,7 @@ public class LibraryManager {
         lentManager.storeContent();
     }
 
-    public void displayContent() {
+    public void displayAllContent() {
         System.out.println("Library content will be printed:");
         booksManager.displayContent();
         usersManager.displayContent();
