@@ -1,3 +1,8 @@
+/**
+ * LentManager
+ * @author: Jacek Kulesz
+ * @date: 2020.03.07
+ */
 package database;
 
 import models.BookModel;
@@ -119,7 +124,7 @@ public class LentManager extends BaseManager<LentBooksModel> {
      */
     protected void displayContent() {
         System.out.println();
-        System.out.println("Lent status: " + allLents.size());
+        System.out.println("Number of users who lent book: " + allLents.size());
         System.out.println();
         for (LentBooksModel lbm : allLents.values()) {
             String fullUserName = this.usersManager.getUserFullName(lbm.getId());
