@@ -1,5 +1,9 @@
+/**
+ * BookModel
+ * @author: Jacek Kulesz
+ * @date: 2021.03.07
+ */
 package models;
-
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,7 +12,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BookModel extends BaseModel implements Serializable {
 
@@ -137,15 +140,14 @@ public class BookModel extends BaseModel implements Serializable {
 
     @Override
     public String toString() {
-        int cnt = 70;
-        return getClass().getName() +
-                "\nid: " + getId() +
+        int maxTitleLen = 100;
+        return  "\nid: " + getId() +
                 "\n" +
-                "year: " + getYear() +
-                "\n" +
-                getShortBookTitle(cnt) +
+                getShortBookTitle(maxTitleLen) +
                 "\n" +
                 "author(s): " + String.join(", ", authors) +
+                "\n" +
+                "year: " + getYear() +
                 "\n" +
                 "type: " + bookType +
                 "\n" +
