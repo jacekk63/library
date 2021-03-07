@@ -1,3 +1,8 @@
+/**
+ * BookType
+ * @author: Jacek Kulesz
+ * @date: 2021.03.07
+ */
 package models;
 
 /**
