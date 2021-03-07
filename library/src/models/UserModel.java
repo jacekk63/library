@@ -1,3 +1,8 @@
+/**
+ * UserModel
+ * @author: Jacek Kulesz
+ * @date: 2021.03.07
+ */
 package models;
 
 import java.io.IOException;
@@ -56,6 +61,10 @@ public class UserModel extends BaseModel implements Serializable {
 
     public void setsurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getFullUserName() {
+        return name + " " + surname;
     }
 
     @Override
