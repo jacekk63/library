@@ -1,3 +1,8 @@
+/**
+ * BaseManager
+ * @author: Jacek Kulesz
+ * @date: 2020.03.07
+ */
 package database;
 
 import java.io.*;
