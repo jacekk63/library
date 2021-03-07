@@ -1,3 +1,8 @@
+/**
+ * UsersManager
+ * @author: Jacek Kulesz
+ * @date: 2021.03.07
+ */
 package database;
 
 import models.UserModel;
