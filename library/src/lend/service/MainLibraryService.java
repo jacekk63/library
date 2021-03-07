@@ -1,7 +1,12 @@
+/**
+ * MainLibraryService
+ * @author: Jacek Kulesz
+ * @date: 2021.03.07
+ */
 package lend.service;
 
-import database.InitialContent;
 import database.LibraryManager;
+import tests.TestLibraryMethods;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,8 +55,7 @@ public class MainLibraryService {
             library.storeContent();
         }
 
-        library.displayContent();
-        InitialContent.testLibraryMethods(library);
+        TestLibraryMethods.testLibraryMethods(library);
     }
 
     private static Map<String, String> parseArgs(String[] args) {
